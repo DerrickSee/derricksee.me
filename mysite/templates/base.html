@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static 'images/logo/favicon.png' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
 
     <!-- Plugins CSS -->
     <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}" />
@@ -101,7 +101,9 @@
             {% for blog in blogs %}
             <div class="news-item">
               <div class="news-media">
+                {% comment %}
                 <img class="img-responsive" src="{% static 'images/news-1.jpg" alt="">
+                {% endcomment %}
               </div>
               <div class="news-info">
                 <a href="#" class="news-tittle">{{ blog.title }}</a>
