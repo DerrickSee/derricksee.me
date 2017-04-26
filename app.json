@@ -18,10 +18,6 @@
     "DJANGO_SETTINGS_MODULE": {
       "description": "This points Heroku to prod",
       "value": "mysite.settings.dev"
-    },
-    "DISABLE_COLLECTSTATIC": {
-      "description": "the hooks should take care of this",
-      "value": "1"
     }
   },
   "image": "heroku/python",
