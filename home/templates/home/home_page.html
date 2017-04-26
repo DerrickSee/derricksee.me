@@ -5,172 +5,239 @@
 
 {% wagtailuserbar %}
 {% block content %}
+
+{% image page.hero_background original as background_image %}
 <!-- Hero Start -->
 <section id="hero">
-  <div class="fs-hero hero-img">
-    <div class="hero-caption center">
-      {% image page.profile_image original as profile_image %}
-      {% image page.background_image original as background_image %}
-      <img class="pull-left" src="{{ profile_image.url }}" alt="">
-      <div class="cliping-text fixed-bg pull-right" style="background-image:url({{ background_image.url }})">
-        <h1 class="font-size-120">Derrick See</h1>
-      </div>
-
-      <p class="text-left">{{ page.profile_text }}</p>
-    </div>
-  </div><!-- /hero-img -->
+    <div class="fs-hero hero-img" style="background-image:url({{ background_image.url }})">
+        <div class="hero-caption text-white center">
+            <h2 class="ls-4 ">{{ page.hero_heading }}</h2>
+            <p class="mrg-top-20 font-size-18">{{ page.hero_subheading }}</p>
+        </div>
+    </div><!-- /hero-img -->
 </section>
 <!-- Hero End -->
 
+<!-- About Start -->
+{% image page.profile_image original as profile_image %}
+<section id="about" class="section-1">
+  <div class="container">
+    <div class="col-md-12">
+      <div class="card padding-20">
+        <div class="row">
+          <div class="col-md-6">
+            <img class="img-responsive" src="{{ profile_image.url }}">
+          </div>
+          <div class="col-md-6">
+            <div class="pdd-horizon-50 pdd-vertical-70">
+              <h2 class="mrg-btm-20">About Me</h2>
+              <p>{{ page.about_text | linebreaks }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- About End -->
 {% comment %}
 <!-- Portfolio Start -->
-<section class="section-5">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="container-fluid">
-        <div class="isotope-filter filter-1 text-center">
-          <a href="#" class="filter-item active" data-filter="*">All</a>
-          <a href="#" class="filter-item" data-filter=".web-design">Web Design</a>
-          <a href="#" class="filter-item" data-filter=".branding">Branding</a>
-          <a href="#" class="filter-item" data-filter=".apps">Apps</a>
-          <a href="#" class="filter-item" data-filter=".photography">Photography</a>
+<section id="services" class="section-1 bg-gray">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <h2 class="heading-1 mrg-top-70">Our Recent Works</h2>
+        <p class="width-90">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
+        <div class="mrg-top-30">
+          <a href="" class="btn btn-md btn-theme">See All Works</a>
         </div>
-        <div class="portfolio isotope row col-4 gutter-sm masonry mrg-top-50">
-          <a href="#" class="folio-item web-design">
-            <div class="folio-style-1">
-              <div class="folio-image">
-                <img class="img-responsive" src="{% static 'images/portfolio/folio-26.jpg" alt="">
+      </div>
+      <div class="col-md-6 col-md-offset-1">
+        <div class="card padding-30">
+          <div class="swiper-single swiper-container">
+            <div class="swiper-wrapper no-mrg-btm">
+              <div class="swiper-slide">
+                <div class="portfolio">
+                  <div class="folio-item">
+                    <div class="folio-style-4">
+                      <div class="folio-image">
+                        <img class="img-responsive" src="assets/images/portfolio/folio-26.jpg" alt="">
+                      </div>
+                      <div class="overlay">
+                        <div class="folio-caption">
+                          <div class="folio-content">
+                            <div class="folio-info">
+                              <h3 class="folio-tittle">The Card</h3>
+                              <span class="folio-sub-title">Branding / Graphic</span>
+                            </div>
+                            <span class="divider"></span>
+                            <div class="folio-action">
+                              <a class="lightbox-img" href="assets/images/portfolio/folio-26.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
+                              <a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="overlay">
-                <div class="folio-caption">
-                  <div class="folio-content">
-                    <h3 class="folio-tittle">The Card</h3>
-                    <span>Web / Graphic</span>
+              <div class="swiper-slide">
+                <div class="portfolio">
+                  <div class="folio-item">
+                    <div class="folio-style-4">
+                      <div class="folio-image">
+                        <img class="img-responsive" src="assets/images/portfolio/folio-27.jpg" alt="">
+                      </div>
+                      <div class="overlay">
+                        <div class="folio-caption">
+                          <div class="folio-content">
+                            <div class="folio-info">
+                              <h3 class="folio-tittle">The Card</h3>
+                              <span class="folio-sub-title">Branding / Graphic</span>
+                            </div>
+                            <span class="divider"></span>
+                            <div class="folio-action">
+                              <a class="lightbox-img" href="assets/images/portfolio/folio-26.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
+                              <a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="portfolio">
+                  <div class="folio-item">
+                    <div class="folio-style-4">
+                      <div class="folio-image">
+                        <img class="img-responsive" src="assets/images/portfolio/folio-28.jpg" alt="">
+                      </div>
+                      <div class="overlay">
+                        <div class="folio-caption">
+                          <div class="folio-content">
+                            <div class="folio-info">
+                              <h3 class="folio-tittle">The Card</h3>
+                              <span class="folio-sub-title">Branding / Graphic</span>
+                            </div>
+                            <span class="divider"></span>
+                            <div class="folio-action">
+                              <a class="lightbox-img" href="assets/images/portfolio/folio-26.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
+                              <a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </a>
-          <a href="#" class="folio-item branding">
-            <div class="folio-style-1">
-              <div class="folio-image">
-                <img class="img-responsive" src="{% static 'images/portfolio/folio-36.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Portfolio End -->
+
+<!-- Portfolio Start -->
+<section id="services2" class="section-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <h2 class="heading-1 mrg-top-70">Our Recent Works</h2>
+        <p class="width-90">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
+        <div class="mrg-top-30">
+          <a href="" class="btn btn-md btn-theme">See All Works</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-md-offset-1">
+        <div class="card padding-30">
+          <div class="swiper-single swiper-container">
+            <div class="swiper-wrapper no-mrg-btm">
+              <div class="swiper-slide">
+                <div class="portfolio">
+                  <div class="folio-item">
+                    <div class="folio-style-4">
+                      <div class="folio-image">
+                        <img class="img-responsive" src="assets/images/portfolio/folio-26.jpg" alt="">
+                      </div>
+                      <div class="overlay">
+                        <div class="folio-caption">
+                          <div class="folio-content">
+                            <div class="folio-info">
+                              <h3 class="folio-tittle">The Card</h3>
+                              <span class="folio-sub-title">Branding / Graphic</span>
+                            </div>
+                            <span class="divider"></span>
+                            <div class="folio-action">
+                              <a class="lightbox-img" href="assets/images/portfolio/folio-26.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
+                              <a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="overlay">
-                <div class="folio-caption">
-                  <div class="folio-content">
-                    <h3 class="folio-tittle">A Pool</h3>
-                    <span>Web / Graphic</span>
+              <div class="swiper-slide">
+                <div class="portfolio">
+                  <div class="folio-item">
+                    <div class="folio-style-4">
+                      <div class="folio-image">
+                        <img class="img-responsive" src="assets/images/portfolio/folio-27.jpg" alt="">
+                      </div>
+                      <div class="overlay">
+                        <div class="folio-caption">
+                          <div class="folio-content">
+                            <div class="folio-info">
+                              <h3 class="folio-tittle">The Card</h3>
+                              <span class="folio-sub-title">Branding / Graphic</span>
+                            </div>
+                            <span class="divider"></span>
+                            <div class="folio-action">
+                              <a class="lightbox-img" href="assets/images/portfolio/folio-26.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
+                              <a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="portfolio">
+                  <div class="folio-item">
+                    <div class="folio-style-4">
+                      <div class="folio-image">
+                        <img class="img-responsive" src="assets/images/portfolio/folio-28.jpg" alt="">
+                      </div>
+                      <div class="overlay">
+                        <div class="folio-caption">
+                          <div class="folio-content">
+                            <div class="folio-info">
+                              <h3 class="folio-tittle">The Card</h3>
+                              <span class="folio-sub-title">Branding / Graphic</span>
+                            </div>
+                            <span class="divider"></span>
+                            <div class="folio-action">
+                              <a class="lightbox-img" href="assets/images/portfolio/folio-26.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
+                              <a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </a>
-          <a href="#" class="folio-item web-design">
-            <div class="folio-style-1">
-              <div class="folio-image">
-                <img class="img-responsive" src="{% static 'images/portfolio/folio-27.jpg" alt="">
-              </div>
-              <div class="overlay">
-                <div class="folio-caption">
-                  <div class="folio-content">
-                    <h3 class="folio-tittle">A Pool</h3>
-                    <span>Web / Graphic</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="folio-item apps">
-            <div class="folio-style-1">
-              <div class="folio-image">
-                <img class="img-responsive" src="{% static 'images/portfolio/folio-33.jpg" alt="">
-              </div>
-              <div class="overlay">
-                <div class="folio-caption">
-                  <div class="folio-content">
-                    <h3 class="folio-tittle">A Pool</h3>
-                    <span>Web / Graphic</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="folio-item photography">
-            <div class="folio-style-1">
-              <div class="folio-image">
-                <img class="img-responsive" src="{% static 'images/portfolio/folio-37.jpg" alt="">
-              </div>
-              <div class="overlay">
-                <div class="folio-caption">
-                  <div class="folio-content">
-                    <h3 class="folio-tittle">A Pool</h3>
-                    <span>Web / Graphic</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="folio-item apps">
-            <div class="folio-style-1">
-              <div class="folio-image">
-                <img class="img-responsive" src="{% static 'images/portfolio/folio-29.jpg" alt="">
-              </div>
-              <div class="overlay">
-                <div class="folio-caption">
-                  <div class="folio-content">
-                    <h3 class="folio-tittle">A Pool</h3>
-                    <span>Web / Graphic</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="folio-item apps">
-            <div class="folio-style-1">
-              <div class="folio-image">
-                <img class="img-responsive" src="{% static 'images/portfolio/folio-38.jpg" alt="">
-              </div>
-              <div class="overlay">
-                <div class="folio-caption">
-                  <div class="folio-content">
-                    <h3 class="folio-tittle">A Pool</h3>
-                    <span>Web / Graphic</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="folio-item apps">
-            <div class="folio-style-1">
-              <div class="folio-image">
-                <img class="img-responsive" src="{% static 'images/portfolio/folio-28.jpg" alt="">
-              </div>
-              <div class="overlay">
-                <div class="folio-caption">
-                  <div class="folio-content">
-                    <h3 class="folio-tittle">A Pool</h3>
-                    <span>Web / Graphic</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="folio-item apps">
-            <div class="folio-style-1">
-              <div class="folio-image">
-                <img class="img-responsive" src="{% static 'images/portfolio/folio-31.jpg" alt="">
-              </div>
-              <div class="overlay">
-                <div class="folio-caption">
-                  <div class="folio-content">
-                    <h3 class="folio-tittle">A Pool</h3>
-                    <span>Web / Graphic</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
+          </div>
         </div>
       </div>
     </div>
@@ -178,25 +245,5 @@
 </section>
 <!-- Portfolio End -->
 {% endcomment %}
-
-<!-- Intro Start -->
-<section class="section-1">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <div class="text-center">
-          <h2 class="lh-1-5">{{ page.feature_title }}</h2>
-          <p class="width-80 mrg-top-40 mrg-horizon-auto">{{ page.feature_text }}</p>
-          <ul class="social-btn mrg-top-30">
-            <li><a class="btn icon-btn-md btn-dark-inverse hover-facebook border-radius-round" href="javascript:void(0);"><i class="ei ei-facebook"></i></a></li>
-            <li><a class="btn icon-btn-md btn-dark-inverse hover-twitter border-radius-round" href="javascript:void(0);"><i class="ei ei-twitter"></i></a></li>
-            <li><a class="btn icon-btn-md btn-dark-inverse hover-instagram border-radius-round" href="javascript:void(0);"><i class="ei ei-instagram"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Intro End -->
 
 {% endblock %}

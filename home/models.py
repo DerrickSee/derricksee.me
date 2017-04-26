@@ -4,38 +4,50 @@ from django.db import models
 
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 
 
 
 
 class HomePage(Page):
+    hero_background = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text="1920x1080"
+    )
+    hero_heading = models.TextField()
+    hero_subheading = models.TextField()
+    # About Me
     profile_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
-        help_text="180x220"
+        help_text="600x600"
     )
-    background_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+',
-        help_text="650x450"
-    )
-    profile_text = models.TextField()
-    feature_title = models.TextField()
-    feature_text = models.TextField()
-
+    about_text = models.TextField()
 
     content_panels = Page.content_panels + [
-        ImageChooserPanel('profile_image'),
-        ImageChooserPanel('background_image'),
-        FieldPanel('profile_text'),
-        FieldPanel('feature_title'),
-        FieldPanel('feature_text'),
+        MultiFieldPanel(
+            [
+                ImageChooserPanel('hero_background'),
+                FieldPanel('hero_heading'),
+                FieldPanel('hero_subheading'),
+            ],
+            heading="Hero",
+            classname="collapsible"
+        ),
+        MultiFieldPanel(
+            [
+                ImageChooserPanel('profile_image'),
+                FieldPanel('about_text'),
+            ],
+            heading="About Me",
+            classname="collapsible"
+        ),
     ]
