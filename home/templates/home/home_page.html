@@ -40,9 +40,10 @@
   </div>
 </section>
 <!-- About End -->
-{% comment %}
+
+{% for service in services %}
 <!-- Portfolio Start -->
-<section id="services" class="section-1 bg-gray">
+<section id="services" class="section-{{ forloop.counter }} {% cycle 'bg-gray' '' %}">
   <div class="container">
     <div class="row">
       <div class="col-md-5">
@@ -142,108 +143,84 @@
   </div>
 </section>
 <!-- Portfolio End -->
+{% endfor %}
 
-<!-- Portfolio Start -->
-<section id="services2" class="section-2">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-5">
-        <h2 class="heading-1 mrg-top-70">Our Recent Works</h2>
-        <p class="width-90">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
-        <div class="mrg-top-30">
-          <a href="" class="btn btn-md btn-theme">See All Works</a>
+
+<!-- Contact Start -->
+<section id="contact">
+	<div class="content-block-2">
+    <div class="image-container col-md-6">
+      <div class="background-holder has-content" style="background-image: url(assets/images/bg-4.jpg)">
+        <div class="content">
+      		<div class="row">
+      			<div class="col-md-8 col-md-offset-2">
+      				<div class="card padding-30 mrg-vertical-40">
+      					<form class="contact-form-wrapper" name="contactForm" id="contact_form" method="post" action="{% url 'contact-form' %}">
+                  {% csrf_token %}
+      						<div class="row">
+      							<div class="form-group col-md-6">
+      								<input type="text" class="form-control" name="name" placeholder="Name" required>
+      							</div>
+      							<div class="form-group col-md-6">
+      								<input type="email" class="form-control input-email fill-this" name="email" placeholder="Email" required>
+      							</div>
+      							<div class="form-group col-md-12">
+      								<input type="text" class="form-control" name="subject" placeholder="Subject" required>
+      							</div>
+      							<div class="form-group col-md-12">
+      								<textarea class="form-control" name="message" rows="3" placeholder="Message" required></textarea>
+      							</div>
+      							<div class="form-group col-md-12">
+      								<div id="mail_success" class="success" style="display:none;">
+      									Thank You! I will be contacting you shortly.
+      								</div>
+      								<div id="mail_fail" class="error" style="display:none;">
+      									An error occured, please try again later!
+      								</div>
+      							</div>
+      							<div class="form-group col-md-12" id="submit">
+      								<input class="btn btn-md btn-dark" type="submit" id="send_message" value="Send Message">
+      							</div>
+      						</div>
+      					</form>
+      				</div>
+      			</div>
+      		</div>
         </div>
       </div>
-      <div class="col-md-6 col-md-offset-1">
-        <div class="card padding-30">
-          <div class="swiper-single swiper-container">
-            <div class="swiper-wrapper no-mrg-btm">
-              <div class="swiper-slide">
-                <div class="portfolio">
-                  <div class="folio-item">
-                    <div class="folio-style-4">
-                      <div class="folio-image">
-                        <img class="img-responsive" src="assets/images/portfolio/folio-26.jpg" alt="">
-                      </div>
-                      <div class="overlay">
-                        <div class="folio-caption">
-                          <div class="folio-content">
-                            <div class="folio-info">
-                              <h3 class="folio-tittle">The Card</h3>
-                              <span class="folio-sub-title">Branding / Graphic</span>
-                            </div>
-                            <span class="divider"></span>
-                            <div class="folio-action">
-                              <a class="lightbox-img" href="assets/images/portfolio/folio-26.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
-                              <a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="portfolio">
-                  <div class="folio-item">
-                    <div class="folio-style-4">
-                      <div class="folio-image">
-                        <img class="img-responsive" src="assets/images/portfolio/folio-27.jpg" alt="">
-                      </div>
-                      <div class="overlay">
-                        <div class="folio-caption">
-                          <div class="folio-content">
-                            <div class="folio-info">
-                              <h3 class="folio-tittle">The Card</h3>
-                              <span class="folio-sub-title">Branding / Graphic</span>
-                            </div>
-                            <span class="divider"></span>
-                            <div class="folio-action">
-                              <a class="lightbox-img" href="assets/images/portfolio/folio-26.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
-                              <a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="portfolio">
-                  <div class="folio-item">
-                    <div class="folio-style-4">
-                      <div class="folio-image">
-                        <img class="img-responsive" src="assets/images/portfolio/folio-28.jpg" alt="">
-                      </div>
-                      <div class="overlay">
-                        <div class="folio-caption">
-                          <div class="folio-content">
-                            <div class="folio-info">
-                              <h3 class="folio-tittle">The Card</h3>
-                              <span class="folio-sub-title">Branding / Graphic</span>
-                            </div>
-                            <span class="divider"></span>
-                            <div class="folio-action">
-                              <a class="lightbox-img" href="assets/images/portfolio/folio-26.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
-                              <a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-6 ">
+          <div class="text-content bg-gray">
+						<div class="mrg-btm-30">
+							<h2>Contact Me</h2>
+							<p class="width-80">Looking to start or revamp your webstore? Want to automate some processes to improve efficiency? Drop me a message and we can discuss about how we can start a project together.</p>
+						</div>
+						<p>
+							<b class="text-dark">Email Address:</b>
+							<span>hello@derricksee.me</span>
+						</p>
+            <p>
+							<b class="text-dark">Phone:</b>
+							<span>+65 8748-7725</span>
+						</p>
+						<div class="row mrg-top-30">
+							<div class="col-md-9">
+								<p class="font-size-17 text-dark"><b>Address</b></p>
+								<p>120 Robinson Road #15-01<br/>Singapore 068913</p>
+							</div>
+						</div>
+						<ul class="social-btn mrg-top-30">
+							<li><a class="btn icon-btn-md btn-dark-inverse hover-facebook border-radius-round" href="javascript:void(0);"><i class="ei ei-facebook"></i></a></li>
+							<li><a class="btn icon-btn-md btn-dark-inverse hover-twitter border-radius-round" href="javascript:void(0);"><i class="ei ei-twitter"></i></a></li>
+							<li><a class="btn icon-btn-md btn-dark-inverse hover-google-plus border-radius-round" href="javascript:void(0);"><i class="ei ei-google-plus"></i></a></li>
+						</ul>
+					</div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- Portfolio End -->
-{% endcomment %}
-
+<!-- Contact End -->
 {% endblock %}

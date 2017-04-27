@@ -90,6 +90,7 @@
 
   <!-- Footer Start -->
   <section class="footer-default">
+    {% comment %}
     <div class="container">
       <div class="row mrg-btm-30">
         <div class="col-md-5">
@@ -104,9 +105,9 @@
             {% for blog in blogs %}
             <div class="news-item">
               <div class="news-media">
-                {% comment %}
+
                 <img class="img-responsive" src="{% static 'images/news-1.jpg" alt="">
-                {% endcomment %}
+
               </div>
               <div class="news-info">
                 <a href="#" class="news-tittle">{{ blog.title }}</a>
@@ -118,6 +119,7 @@
         </div>
       </div>
     </div>
+    {% endcomment %}
     <div class="footer-bottom">
       <div class="container">
         <span class="copyright">Copyright © 2016 Derrick See.</span>
@@ -152,6 +154,9 @@
        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
   <script type="text/javascript" src="{% static 'js/email.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+  {% block scripts %}
+  {% endblock %}
 </body>
 
 </html>

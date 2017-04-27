@@ -23,3 +23,4 @@ whitenoise
 django-storages
 boto3
 django-compressor
+sparkpost

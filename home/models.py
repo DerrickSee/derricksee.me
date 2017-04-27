@@ -8,8 +8,6 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 
 
-
-
 class HomePage(Page):
     hero_background = models.ForeignKey(
         'wagtailimages.Image',
@@ -51,3 +49,11 @@ class HomePage(Page):
             classname="collapsible"
         ),
     ]
+
+
+# class ServicePage(Page):
+#     text = models.TextField()
+#
+#     content_panels = Page.content_panels + [
+#         FieldPanel('text'),
+#     ]

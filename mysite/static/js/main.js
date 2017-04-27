@@ -461,7 +461,6 @@ var Eastern = function() {
             magnificPopup(); // Magnific Popup Control
             counterPlugin(); // Counter Control
             progressBar(); // Progress Bar Control
-            youtubePlayer(); // YoutubePlayer Control
             wowReveal(); // Wow Control
             quantitySelector(); // Quantity Selector Control
             footerReveal(); // Footer Reveal Control

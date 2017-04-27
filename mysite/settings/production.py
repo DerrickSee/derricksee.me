@@ -38,6 +38,9 @@ WAGTAILFRONTENDCACHE = {
     },
 }
 
+SPARKPOST_API_KEY = os.environ.get('SPARKPOST_API_KEY')
+EMAIL_BACKEND = 'sparkpost.django.email_backend.SparkPostEmailBackend'
+
 
 try:
     from .local import *
