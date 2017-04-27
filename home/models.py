@@ -2,9 +2,10 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-from wagtail.wagtailcore.models import Page
+from modelcluster.fields import ParentalKey
+from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 
 
@@ -48,12 +49,24 @@ class HomePage(Page):
             heading="About Me",
             classname="collapsible"
         ),
+        InlinePanel('services', label="Services"),
     ]
 
 
-# class ServicePage(Page):
-#     text = models.TextField()
-#
-#     content_panels = Page.content_panels + [
-#         FieldPanel('text'),
-#     ]
+class ServicePage(Orderable):
+    page = ParentalKey(HomePage, related_name='services')
+    title = models.TextField()
+    text = models.TextField()
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text="1150x580"
+    )
+
+    panels = Page.content_panels + [
+        FieldPanel('text'),
+        ImageChooserPanel('image'),
+    ]

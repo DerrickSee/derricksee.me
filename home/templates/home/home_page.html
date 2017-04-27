@@ -41,109 +41,33 @@
 </section>
 <!-- About End -->
 
-{% for service in services %}
-<!-- Portfolio Start -->
-<section id="services" class="section-{{ forloop.counter }} {% cycle 'bg-gray' '' %}">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-5">
-        <h2 class="heading-1 mrg-top-70">Our Recent Works</h2>
-        <p class="width-90">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
-        <div class="mrg-top-30">
-          <a href="" class="btn btn-md btn-theme">See All Works</a>
-        </div>
-      </div>
-      <div class="col-md-6 col-md-offset-1">
-        <div class="card padding-30">
-          <div class="swiper-single swiper-container">
-            <div class="swiper-wrapper no-mrg-btm">
-              <div class="swiper-slide">
-                <div class="portfolio">
-                  <div class="folio-item">
-                    <div class="folio-style-4">
-                      <div class="folio-image">
-                        <img class="img-responsive" src="assets/images/portfolio/folio-26.jpg" alt="">
-                      </div>
-                      <div class="overlay">
-                        <div class="folio-caption">
-                          <div class="folio-content">
-                            <div class="folio-info">
-                              <h3 class="folio-tittle">The Card</h3>
-                              <span class="folio-sub-title">Branding / Graphic</span>
-                            </div>
-                            <span class="divider"></span>
-                            <div class="folio-action">
-                              <a class="lightbox-img" href="assets/images/portfolio/folio-26.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
-                              <a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="portfolio">
-                  <div class="folio-item">
-                    <div class="folio-style-4">
-                      <div class="folio-image">
-                        <img class="img-responsive" src="assets/images/portfolio/folio-27.jpg" alt="">
-                      </div>
-                      <div class="overlay">
-                        <div class="folio-caption">
-                          <div class="folio-content">
-                            <div class="folio-info">
-                              <h3 class="folio-tittle">The Card</h3>
-                              <span class="folio-sub-title">Branding / Graphic</span>
-                            </div>
-                            <span class="divider"></span>
-                            <div class="folio-action">
-                              <a class="lightbox-img" href="assets/images/portfolio/folio-26.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
-                              <a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="portfolio">
-                  <div class="folio-item">
-                    <div class="folio-style-4">
-                      <div class="folio-image">
-                        <img class="img-responsive" src="assets/images/portfolio/folio-28.jpg" alt="">
-                      </div>
-                      <div class="overlay">
-                        <div class="folio-caption">
-                          <div class="folio-content">
-                            <div class="folio-info">
-                              <h3 class="folio-tittle">The Card</h3>
-                              <span class="folio-sub-title">Branding / Graphic</span>
-                            </div>
-                            <span class="divider"></span>
-                            <div class="folio-action">
-                              <a class="lightbox-img" href="assets/images/portfolio/folio-26.jpg" title="The Card"><i class="ei ei-plus-boxed"></i></a>
-                              <a class="" href="portfolio-single-1.html"><i class="ei ei-link"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+<!-- Intro Start -->
+<section class="" id="services">
+  <h2 class="heading-1 text-center">My Services</h2>
+  <p class="text-center width-70 mrg-horizon-auto">If you are looking to inject some technology into your small business/organisation, here are some services I can offer.</p>
+  {% for service in page.services.all %}
+  <div class="content-block-2">
+    <div class="image-container col-md-6 {% cycle 'col-md-offset-6' '' %}">
+      {% image service.image original as service_image %}
+      <div class="background-holder has-content" style="background-image: url({{ service_image.url }})">
+        <div class="content">
+        </div><!-- content -->
+      </div><!-- /background-holder -->
+    </div><!-- /image-container -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 {% cycle '' 'col-md-offset-6' %}">
+          <div class="text-content">
+            <h2 class="heading-1 mrg-btm-40">{{ service.title }}</h2>
+            <p>{{ service.text | linebreaks }}</p>
+          </div><!-- /content -->
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- Portfolio End -->
+  </div><!-- /content-block-2 -->
 {% endfor %}
+</section>
+<!-- Intro End -->
 
 
 <!-- Contact Start -->
