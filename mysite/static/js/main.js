@@ -1,7 +1,7 @@
 var Eastern = function() {
     'use strict';
 
-    // Loaders 
+    // Loaders
     var loaders = function() {
             $(window).load(function() {
                 $(".loader-wrapper .loaders").fadeOut();
@@ -347,13 +347,6 @@ var Eastern = function() {
                 offset: "100%"
             });
         })
-    }
-
-    //Youtube Player
-    var youtubePlayer = function() {
-        $(function() {
-            jQuery(".video-player").YTPlayer();
-        });
     }
 
     //WOW
