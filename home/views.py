@@ -41,11 +41,12 @@ class ContactFormView(AjaxableResponseMixin, FormView):
 
     def form_valid(self, form):
         from django.core.mail import send_mail
-        message = "%s\n\n%s" % (form.cleaned_data['message'], form.cleaned_data['name'])
+        data = form.cleaned_data
+        message = "%s\n\n%s\n%s" % (data['message'], data['name'], data['email'])
         send_mail(
             "New Inquiry: %s" % form.cleaned_data['subject'],
             message,
-            form.cleaned_data['email'],
+            'hello@derricksee.me',
             ['hello@derricksee.me'],
             fail_silently=False,
         )
