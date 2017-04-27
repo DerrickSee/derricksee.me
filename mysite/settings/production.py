@@ -31,6 +31,13 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+WAGTAILFRONTENDCACHE = {
+    'cloudfront': {
+        'BACKEND': 'wagtail.contrib.wagtailfrontendcache.backends.CloudfrontBackend',
+        'DISTRIBUTION_ID': os.environ.get('CLOUDFRONT_DISTRIBUTION_ID'),
+    },
+}
+
 
 try:
     from .local import *
