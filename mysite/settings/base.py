@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'taggit',
     'whitenoise',
     'storages',
+    'compressor',
 
 
     'django.contrib.admin',
@@ -130,6 +131,7 @@ USE_TZ = True
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 ]
 
 STATICFILES_DIRS = [
