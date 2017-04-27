@@ -47,7 +47,7 @@
 37. Blog Default
 38. Blog Grid
 39. Blog Card
-40. Blog List 
+40. Blog List
 41. Blog Classic
 42. Blog Single Post
 
@@ -5458,7 +5458,7 @@ section {
 
 .hero-caption p,
 .page-cover .cover-caption p {
-    max-width: 550px;
+    /*max-width: 550px;*/
 }
 
 @media only screen and (max-width: 767px) {
