@@ -67,22 +67,20 @@
 					<div class="collapse navbar-collapse nav-collapse">
             <ul class="nav navbar-nav" >
               <li class="nav-item">
-                <a class="scroll-to" href="#hero">Home</a>
+                <a class="scroll-to" href="{% slugurl 'home' %}#hero">Home</a>
               </li>
               <li class="nav-item">
-                <a class="scroll-to" href="#about">About</a>
+                <a class="scroll-to" href="{% slugurl 'home' %}#about">About</a>
               </li>
               <li class="nav-item">
-                <a class="scroll-to" href="#services">Services</a>
+                <a class="scroll-to" href="{% slugurl 'home' %}#services">Services</a>
               </li>
               <li class="nav-item">
-                <a class="scroll-to" href="#contact">Contact</a>
+                <a class="scroll-to" href="{% slugurl 'home' %}#contact">Contact</a>
               </li>
-              {% comment %}
               <li class="nav-item">
-                <a href="javascript:void(0);">Blog</a>
+                <a href="{% slugurl 'blog' %}">Blog</a>
               </li>
-              {% endcomment %}
             </div>
           </div>
       </nav>
@@ -90,7 +88,8 @@
     <!-- Header End -->
     {% block content %}
     {% endblock %}
-  </div><!-- wrapper -->
+  </div>
+  <!-- wrapper -->
 
 
   <!-- Footer Start -->

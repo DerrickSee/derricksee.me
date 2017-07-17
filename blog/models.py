@@ -1,31 +1,40 @@
 from django.db import models
 
 from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailcore.fields import RichTextField
+from wagtail.wagtailcore import blocks
+from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
 
 from modelcluster.fields import ParentalKey
-from wagtail.wagtailadmin.edit_handlers import (FieldPanel,
-                                                InlinePanel,
+from wagtail.wagtailadmin.edit_handlers import (FieldPanel, InlinePanel,
                                                 MultiFieldPanel,
-                                                PageChooserPanel)
+                                                PageChooserPanel, StreamFieldPanel)
+from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 class BlogPage(Page):
-    main_image = models.ForeignKey(
+    date = models.DateField("Post date")
+    hero_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name='+',
+        help_text="1920x1080"
     )
-    date = models.DateField("Post date")
-    intro = models.CharField(max_length=250)
-    body = RichTextField(blank=True)
+    intro = models.TextField()
+    summary = models.TextField()
+    rating = models.DecimalField(decimal_places=1, max_digits=2, default=1)
+    body = StreamField([
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+    ])
 
     search_fields = Page.search_fields + [
         index.SearchField('intro'),
@@ -34,9 +43,11 @@ class BlogPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('date'),
-        ImageChooserPanel('main_image'),
+        ImageChooserPanel('hero_image'),
         FieldPanel('intro'),
-        FieldPanel('body'),
+        FieldPanel('summary'),
+        FieldPanel('title'),
+        StreamFieldPanel('body'),
     ]
 
 
@@ -80,19 +91,23 @@ class RelatedLink(LinkFields):
 
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
+    hero_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text="1600x1000"
+    )
 
     @property
     def blogs(self):
-
         blogs = BlogPage.objects.live().descendant_of(self)
-
         blogs = blogs.order_by('-date')
-
         return blogs
 
     def get_context(self, request):
         blogs = self.blogs
-
         page = request.GET.get('page')
         paginator = Paginator(blogs, 3) #count pages to display
         try:
@@ -107,5 +122,6 @@ class BlogIndexPage(Page):
         return context
 
     content_panels = Page.content_panels + [
-        FieldPanel('intro', classname="full")
+        FieldPanel('intro', classname="full"),
+        ImageChooserPanel('hero_image'),
     ]

@@ -1,31 +1,58 @@
-{% extends "base.html" %} {% load wagtailcore_tags wagtailimages_tags static wagtailuserbar %}
-<style type="text/css">
-.waves-effect {}
-</style>
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static wagtailuserbar %}
 
 {% block body_class %}template-blogindexpage{% endblock %}
 
-{% block image %}
-<header class="intro-header" style="background-image: url(&#39;{% static 'img/intro.jpg' %}&#39;)">
-    {% endblock %} {% block content %}
-    <!--<h1>{{ page.title }}</h1>
-    <div class="intro">{{ page.intro|richtext }}</div>-->
-    <hr> {% for blog in blogs %} {% include "blog/includes/blog_list_item.html" %}
-    <hr> {% empty %} NOPE {% endfor %}
-    <div class="row">
-        <ul class="pagination center">
-            {% if blogs.has_previous %}
-            <li class="waves-effect">
-                <a href="?page={{ blogs.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">{{ blogs.previous_page_number }}</a></li>
-            {% endif %}
-
-            {% if blogs.has_next %}
-                <li class="active "><a href=" ">{{ blogs.number }}</a></li>
-                <li class="waves-effect "><a href="?page={{ blogs.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %} ">{{ blogs.next_page_number }}</a></li>
-            {% else %}
-                <li class="active "><a href=" ">{{ blogs.number }}</a></li>
-            {% endif %}
-
-        </ul>
+{% block content %}
+<!-- Page Tittle Start -->
+<section class="page-tittle page-tittle-lg kenburn-bg dark-overlay">
+  <img class="kenburn-img" src="assets/images/bg-18.jpg" alt="">
+  <div class="container">
+    <div class="page-tittle-head">
+      <h2>{{ page.title }}</h2>
+      {{ page.intro|safe }}
     </div>
+  </div>
+</section>
+<!-- Page Tittle End -->
+
+
+<!-- Blog Start -->
+<section class="section-1 bg-gray">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-1 col-md-10">
+        <div class="blog-card masonry isotope col-2 gutter-lg">
+          {% for blog in blogs %}
+          <div class="blog-item">
+            <div class="blog-wrapper">
+              <div class="blog-media">
+                {% image blog.image class="img-responsive" %}
+              </div>
+              <div class="blog-content">
+                <h3 class="blog-tittle"><a href="blog-classic-left-sidebar.html">{{ blog.title }}</a></h3>
+                <div class="blog-meta">
+                  <span class="date"> {{ blog.created }}</span>
+                </div>
+                <p class="blog-article">{{ blog.summary }}</p>
+                <div class="blog-action">
+                  {% comment %}
+                  <span class="comments"><a href="javascript:void(0);"><i class="ei ei-speech-bubble"></i> 20</a></span>
+                  <span class="likes"><a href="javascript:void(0);"><i class="ei ei-heart"></i> 168</a></span>
+                  {% endcomment %}
+                  <a class="continue-reading" href="{% pageurl blog %}">Read More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="text-center mrg-top-50">
+          <button class="btn btn-dark btn-md">Show More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Blog End -->
 {% endblock %}
