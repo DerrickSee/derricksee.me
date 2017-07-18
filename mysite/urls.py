@@ -18,6 +18,7 @@ urlpatterns = [
 
     url(r'^search/$', search_views.search, name='search'),
     url(r'^contact/$', ContactFormView.as_view(), name='contact-form'),
+    url(r'^likes/', include('likes.urls')),
 
     url(r'', include(wagtail_urls)),
 ]

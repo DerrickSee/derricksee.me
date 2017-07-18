@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags static wagtailuserbar %}
+{% load likes_inclusion_tags %}
 
 {% block content %}
 <!-- Post Cover Start -->
@@ -8,7 +9,7 @@
   <div class="container">
     <h2 class="blog-tittle">{{ page.title }}</h2>
     <div class="blog-meta">
-      <p>{{ page.summary }}</p>
+      <p>{{ page.intro }}</p>
     </div>
   </div>
 </section>
@@ -29,12 +30,15 @@
             {% endif %}
           {% endfor %}
         </div>
-        {% comment %}
+
         <div class="blog-action">
+          {% likes page %}
+          {% comment %}
           <span class="comments"><a href="javascript:void(0);"><i class="ei ei-speech-bubble"></i> 20</a></span>
-          <span class="likes"><a href="javascript:void(0);"><i class="ei ei-heart"></i> 168</a></span>
           <span class="share"><a href="javascript:void(0);"><i class="ei ei-sharethis"></i> Share</a></span>
+          {% endcomment %}
         </div>
+        {% comment %}
         <div class="mrg-top-90">
           <h2>Comments</h2>
           <p>17 Comments</p>

@@ -36,10 +36,7 @@
                 </div>
                 <p class="blog-article">{{ blog.summary }}</p>
                 <div class="blog-action">
-                  {% comment %}
-                  <span class="comments"><a href="javascript:void(0);"><i class="ei ei-speech-bubble"></i> 20</a></span>
-                  <span class="likes"><a href="javascript:void(0);"><i class="ei ei-heart"></i> 168</a></span>
-                  {% endcomment %}
+                  <span class="likes"><i class="ei ei-heart"></i> {{ blog.vote_total|default:"0" }}</span>
                   <a class="continue-reading" href="{% pageurl blog %}">Read More</a>
                 </div>
               </div>

@@ -24,3 +24,5 @@ django-storages
 boto3
 django-compressor
 sparkpost
+django-secretballot
+django-likes

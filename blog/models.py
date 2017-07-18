@@ -13,6 +13,7 @@ from wagtail.wagtailadmin.edit_handlers import (FieldPanel, InlinePanel,
                                                 PageChooserPanel, StreamFieldPanel)
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.blocks import ImageChooserBlock
+import secretballot
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -46,9 +47,11 @@ class BlogPage(Page):
         ImageChooserPanel('hero_image'),
         FieldPanel('intro'),
         FieldPanel('summary'),
-        FieldPanel('title'),
         StreamFieldPanel('body'),
     ]
+
+
+secretballot.enable_voting_on(BlogPage)
 
 
 class LinkFields(models.Model):

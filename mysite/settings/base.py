@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'whitenoise',
     'storages',
     'compressor',
+    'secretballot',
+    'likes',
 
 
     'django.contrib.admin',
@@ -71,6 +73,8 @@ MIDDLEWARE = [
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+    'secretballot.middleware.SecretBallotIpUseragentMiddleware',
+    'likes.middleware.SecretBallotUserIpUseragentMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
