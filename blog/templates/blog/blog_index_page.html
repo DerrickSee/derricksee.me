@@ -6,7 +6,7 @@
 {% block content %}
 <!-- Page Tittle Start -->
 <section class="page-tittle page-tittle-lg kenburn-bg dark-overlay">
-  <img class="kenburn-img" src="assets/images/bg-18.jpg" alt="">
+  {% image page.hero_image original class="kenburn-img" %}
   <div class="container">
     <div class="page-tittle-head">
       <h2>{{ page.title }}</h2>
@@ -27,7 +27,7 @@
           <div class="blog-item">
             <div class="blog-wrapper">
               <div class="blog-media">
-                {% image blog.image class="img-responsive" %}
+                {% image blog.image original class="img-responsive" %}
               </div>
               <div class="blog-content">
                 <h3 class="blog-tittle"><a href="blog-classic-left-sidebar.html">{{ blog.title }}</a></h3>
@@ -47,9 +47,11 @@
           </div>
           {% endfor %}
         </div>
+        {% comment %}
         <div class="text-center mrg-top-50">
           <button class="btn btn-dark btn-md">Show More</button>
         </div>
+        {% endcomment %}
       </div>
     </div>
   </div>
