@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore import blocks
@@ -28,6 +29,14 @@ class BlogPage(Page):
         related_name='+',
         help_text="1920x1080"
     )
+    thumbnail = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text="800x600"
+    )
     intro = models.TextField()
     summary = models.TextField()
     rating = models.DecimalField(decimal_places=1, max_digits=2, default=1)
@@ -45,6 +54,7 @@ class BlogPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('date'),
         ImageChooserPanel('hero_image'),
+        ImageChooserPanel('thumbnail'),
         FieldPanel('intro'),
         FieldPanel('summary'),
         StreamFieldPanel('body'),
@@ -93,6 +103,7 @@ class RelatedLink(LinkFields):
 
 
 class BlogIndexPage(Page):
+    paginate_by = 10
     intro = RichTextField(blank=True)
     hero_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -105,14 +116,15 @@ class BlogIndexPage(Page):
 
     @property
     def blogs(self):
-        blogs = BlogPage.objects.live().descendant_of(self)
+        blogs = BlogPage.objects.live().filter(
+            date__lte=now().date()).descendant_of(self)
         blogs = blogs.order_by('-date')
         return blogs
 
     def get_context(self, request):
         blogs = self.blogs
         page = request.GET.get('page')
-        paginator = Paginator(blogs, 3) #count pages to display
+        paginator = Paginator(blogs, self.paginate_by) #count pages to display
         try:
             blogs = paginator.page(page)
         except PageNotAnInteger:

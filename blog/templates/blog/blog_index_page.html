@@ -26,13 +26,19 @@
           {% for blog in blogs %}
           <div class="blog-item">
             <div class="blog-wrapper">
+
               <div class="blog-media">
-                {% image blog.image original class="img-responsive" %}
+                {% if blog.thumbnail %}
+                {% image blog.thumbnail original class="img-responsive" %}
+                {% else %}
+                {% image blog.hero_image fill-800x600 class="img-responsive" %}
+                {% endif %}
               </div>
+
               <div class="blog-content">
-                <h3 class="blog-tittle"><a href="blog-classic-left-sidebar.html">{{ blog.title }}</a></h3>
+                <h3 class="blog-tittle"><a href="{% pageurl blog %}">{{ blog.title }}</a></h3>
                 <div class="blog-meta">
-                  <span class="date"> {{ blog.created }}</span>
+                  <span class="date"><em>{{ blog.date }}</em></span>
                 </div>
                 <p class="blog-article">{{ blog.summary }}</p>
                 <div class="blog-action">
