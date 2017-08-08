@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static wagtailuserbar %}
+{% load likes_inclusion_tags %}
+
+{% block content %}
+<!-- Post Content Start -->
+<section class="section-1 single-post">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        <div class="blog-article">
+          <h1>{{ page.title }}</h2>
+          <p class="date">{{ page.date }}</p>
+          <h2>Scripture</h2>
+          <p>{{ page.scripture }}</p>
+          <h2>Observation</h2>
+          <p>{{ page.observation|linebreaksbr }}</p>
+          <h2>Application</h2>
+          <p>{{ page.application|linebreaksbr }}</p>
+          <h2>Prayer</h2>
+          <p>{{ page.prayer|linebreaksbr }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Post Content End -->
+{% endblock %}
